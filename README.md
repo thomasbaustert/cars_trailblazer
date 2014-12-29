@@ -5,5 +5,8 @@ Demo app to play around with [Trailblazer](https://github.com/apotonick/trailbla
 
 ## ToDos
 
-  * Introduce roles like insured, surveyor, broker, ...
-  * Introduce own FormBuilder/Form to make fields visible/readonly depending on context (role etc.)
+  * insert roles like insured, surveyor, broker, ... including operation/validation and visible/readonly fields
+  * insert own FormBuilder/Form to make fields visible/readonly depending on context (role etc.)
+  * insert my authorizer 
+  * insert action like send mail, write protocol, ...
+  * where to put "keep copy of original record"?
