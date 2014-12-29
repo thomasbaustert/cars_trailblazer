@@ -32,8 +32,8 @@ class CarRegistrationsController < ApplicationController
 
   private
 
-    # TODO/29.12.14/05:44/tb I prefer 'process_params' which returns a copy of params and modifies
-    # the original params
+    # TODO/29.12.14/05:44/tb I prefer 'process_params' which returns a copy of params
+    # and does not modify original params
     def process_params!(params)
       #params.dup.update(user: current_user)
       params.merge!(current_user: current_user)
