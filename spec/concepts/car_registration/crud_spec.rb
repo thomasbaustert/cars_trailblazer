@@ -21,7 +21,7 @@ describe "Crud" do
     end
 
 
-    it "invalid description" do
+    it "invalid chassis_number" do
       res, op = CarRegistration::Create.run(car_registration: { number_plate: "HH AB 100", chassis_number: "ABC" })
 
       expect(res).to be_false
