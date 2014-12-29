@@ -1,11 +1,11 @@
 <h1>Edit Car Registration</h1>
 
-<%= form_for(@car_registration) do |f| %>
+<%= form_for(@form) do |f| %>
   <%= f.label :number_plate, "Number Plate" %>
   <%= f.text_field :number_plate %>
   <br/>
   <%= f.label :chassis_number, "Chassis Number" %>
-  <%= f.text_field :chassis_number %>
+  <%= f.text_field :chassis_number, readonly: @form.readonly?(:chassis_number) %>
   <br/>
   <br/>
   <%= f.submit %>

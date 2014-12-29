@@ -1,4 +1,9 @@
+# TODO/29.12.14/05:27/tb otherwise I get 'unknown CarRegistration::Create'...
+require 'car_registration/crud'
+
 class CarRegistrationsController < ApplicationController
+  # TODO/29.12.14/05:21/tb otherwise I get 'unknown method form'!?
+  include Trailblazer::Operation::Controller
 
   def index
     @car_registrations = CarRegistration.all
@@ -9,21 +14,19 @@ class CarRegistrationsController < ApplicationController
   end
 
   def create
-    run CarRegistration::Create
+    run CarRegistration::Create do
+      redirect_to car_registrations_url
+    end
   end
 
   def edit
-    @car_registration = CarRegistration.find(params[:id])
+    form CarRegistration::Update
+    #render action: :new
   end
 
   def update
-    @car_registration = CarRegistration.find(params[:id])
-    @car_registration.attributes = params[:car_registration]
-    if @car_registration.valid?
-      @car_registration.save!
+    run CarRegistration::Update do
       redirect_to car_registrations_url
-    else
-      render action: :edit
     end
   end
 
