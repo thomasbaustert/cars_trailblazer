@@ -1,0 +1,6 @@
+.car_registrations label {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+  margin-right: 5px;
+}

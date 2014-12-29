@@ -1,0 +1,21 @@
+<h1>Car Registrations</h1>
+
+<%= link_to 'New', new_car_registration_path %>
+
+<table>
+  <tr>
+    <th class="center" width="5%">Lfd. Nr.</th>
+    <th>Kennzeichen</th>
+  </tr>
+
+<% @car_registrations.each do |car_registration| %>
+  <tr>
+    <td class="center"><%=h car_registration.id %></td>
+    <td class="js-actions actions">
+      <%= link_to "Edit", edit_car_registration_path(car_registration) %>
+    </td>
+    <td><%=h car_registration.number_plate %></td>
+  </tr>
+<% end %>
+</table>
+

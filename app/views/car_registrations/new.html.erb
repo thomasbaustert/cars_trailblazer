@@ -1,0 +1,12 @@
+<h1>New Car Registration</h1>
+
+<%= form_for(@car_registration) do |f| %>
+  <%= f.label :number_plate, "Number Plate" %>
+  <%= f.text_field :number_plate %>
+  <br/>
+  <%= f.label :chassis_number, "Chassis Number" %>
+  <%= f.text_field :chassis_number %>
+  <br/>
+  <br/>
+  <%= f.submit %>
+<% end %>
