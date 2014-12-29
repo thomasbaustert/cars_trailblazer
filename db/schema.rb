@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229134325) do
+ActiveRecord::Schema.define(version: 20141229163604) do
 
   create_table "car_registrations", force: :cascade do |t|
     t.integer "policy_id",           limit: 4
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 20141229134325) do
     t.string  "chassis_number",      limit: 255
     t.date    "registration_date"
     t.date    "deregistration_date"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "firstname", limit: 255
+    t.string "lastname",  limit: 255
+    t.string "email",     limit: 255
   end
 
 end
