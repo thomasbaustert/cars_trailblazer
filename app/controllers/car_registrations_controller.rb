@@ -5,17 +5,11 @@ class CarRegistrationsController < ApplicationController
   end
 
   def new
-    @car_registration = CarRegistration.new
+    form CarRegistration::Create
   end
 
   def create
-    @car_registration = CarRegistration.new(params[:car_registration])
-    if @car_registration.valid?
-      @car_registration.save!
-      redirect_to car_registrations_url
-    else
-      render action: :new
-    end
+    run CarRegistration::Create
   end
 
   def edit
