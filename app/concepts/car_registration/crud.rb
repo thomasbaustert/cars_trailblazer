@@ -19,17 +19,44 @@ class CarRegistration
     end
 
     def process(params)
+      # TODO/29.12.14/06:04/tb record is build or loaded here already. Where to put my keep_copy_record?
+      # Overwrite model!(params)?
+
       validate(params[:car_registration]) do |f|
         f.save
+
+        write_protocol
+        send_mail
       end
     end
+
+    private
+      def write_protocol
+      end
+
+      def send_mail
+      end
   end
 
   class Update < Create
     action :update
 
-    contract do
-      property :chassis_number, writeable: false
+    builds do |params|
+      if params[:current_user].master_role?
+        Master
+      else
+        User
+      end
+    end
+
+    class Master < self
+      # permission to update everything
+    end
+
+    class User < self
+      contract do
+        property :chassis_number, writeable: false
+      end
     end
   end
 

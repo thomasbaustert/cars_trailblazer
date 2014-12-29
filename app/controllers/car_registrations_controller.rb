@@ -36,7 +36,7 @@ class CarRegistrationsController < ApplicationController
     # the original params
     def process_params!(params)
       #params.dup.update(user: current_user)
-      params.merge!(user: current_user)
+      params.merge!(current_user: current_user)
     end
 
     def current_user

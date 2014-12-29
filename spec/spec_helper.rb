@@ -1,8 +1,9 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-#require 'rspec/autorun'
-#require 'email_spec'
+
+# TODO/29.12.14/05:55/tb do we need this?
+require 'car_registration/crud'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -18,4 +19,12 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
+end
+
+def build_master_user(attrs = {})
+  User.new(firstname: "Manfred", lastname: "Master", email: "master@example.org", role: 'master')
+end
+
+def build_user(attrs = {})
+  User.new(firstname: "Uli", lastname: "User", email: "uli@example.org", role: 'user')
 end
