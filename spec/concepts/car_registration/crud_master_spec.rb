@@ -3,6 +3,9 @@ require 'spec_helper'
 describe "Crud by master role" do
   let(:master) { build_master_user }
 
+  # TODO/29.12.14/06:12/tb parts of crud_user_spec.rb are needed here too.
+  # Create shared examples later.
+
   describe "Update" do
 
     let(:car_registration) {
