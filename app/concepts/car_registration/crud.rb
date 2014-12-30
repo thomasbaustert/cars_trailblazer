@@ -22,6 +22,12 @@ class CarRegistration
       # TODO/29.12.14/06:04/tb record is build or loaded here already. Where to put my keep_copy_record?
       # Overwrite model!(params)?
 
+      # TODO/30.12.14/10:55/tb why code validate/save? Isn't it the default often?
+      # If validate would raise an exception we can write this method instead of process often:
+      #   def after_save
+      #     write_protocol
+      #     send_mail
+      #   end
       validate(params[:car_registration]) do |f|
         f.save
 
