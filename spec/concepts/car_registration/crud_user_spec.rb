@@ -49,4 +49,21 @@ describe "Crud by user role" do
       expect(car_registration.chassis_number).to eq "ABCD1234"
     end
   end
+
+  # DISCUSS/06.01.15/07:57/tb
+  # This is a way of using validations running the whole operation including "after save actions",
+  # like write_protocol, send_email, ...
+  describe "Update using contract only" do
+    let(:operation) { CarRegistration::Create.new.present({}) }
+
+    it "works" do
+      # We have to pass the model params here not the full params.
+      # Q: How can we pass current_user cause we need it during validation?
+      # A: We don't have to pass it cause we have a own contract per role!
+      # operation.validate(current_user: user, car_registration: { number_plate: "HH AB 100", chassis_number: "ABCD1234" })
+      result = operation.validate(number_plate: "HH AB 100", chassis_number: "ABCD1234")
+      expect(result).to be_true
+    end
+  end
+
 end
