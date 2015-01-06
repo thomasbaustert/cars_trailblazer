@@ -18,16 +18,24 @@ class CarRegistration
       validates :chassis_number, length: { in: 4..160 }, allow_blank: true
     end
 
+    # TODO/06.01.15/06:54/tb use Cars::Operation with standard process:
+    #  def process(params)
+    #    validate(model_params(params)) do |f|
+    #      f.save
+    #      run_after_save_actions(params)
+    #    end
+    #  end
+    #
+    #  and use run_after_save_actions in sub operations only:
+    #   def run_after_save_actions(params)
+    #     write_protocol
+    #     send_mail
+    #   end
+    #
     def process(params)
       # TODO/29.12.14/06:04/tb record is build or loaded here already. Where to put my keep_copy_record?
       # Overwrite model!(params)?
 
-      # TODO/30.12.14/10:55/tb why code validate/save? Isn't it the default often?
-      # If validate would raise an exception we can write this method instead of process often:
-      #   def after_save
-      #     write_protocol
-      #     send_mail
-      #   end
       validate(params[:car_registration]) do |f|
         f.save
 
